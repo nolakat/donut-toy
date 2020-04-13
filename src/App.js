@@ -9,8 +9,7 @@ import { useSpring, a } from 'react-spring/three'
 import Donut from './components/Donut'
 
 
-// import './style.scss'
-import './index.css'
+import './index.scss'
 
 extend({ OrbitControls })
 
