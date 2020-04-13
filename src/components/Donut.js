@@ -4,13 +4,13 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 import { useLoader } from 'react-three-fiber'
 import { useSpring, animated as a } from 'react-spring/three'
-import { MeshStandardMaterial } from "three"
 
 
 export default ({setShowLoader}) => {
     const group = useRef()
     const outerGroup = useRef()
     const [hovered, setHovered ] = useState(false);
+
     useEffect(() => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'), [hovered]);
 
     const props = useSpring({
@@ -18,11 +18,11 @@ export default ({setShowLoader}) => {
         color: hovered ? "hotpink" : "gray"
       })
 
-
     const {nodes, materials} = useLoader(GLTFLoader, '/newdonut.gltf', loader=>{
         const dracoLoader = new DRACOLoader()
         dracoLoader.setDecoderPath('/draco-gltf/')
         loader.setDRACOLoader(dracoLoader)
+        console.log('donut uploaded');
       })
 
     React.useEffect(() => {
