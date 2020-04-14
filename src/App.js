@@ -15,8 +15,10 @@ import './index.scss'
 extend({ OrbitControls })
 
 export default () => {
-  
+
   const [showLoader, setShowLoader] = React.useState(true);
+  const [icingColor, setIcingColor] = useState('pink');
+
 
   const Controls = () => {
     const orbitRef = useRef();
@@ -44,8 +46,12 @@ export default () => {
        </animated.div>
     )
   }
-  
 
+  function radioChangeHandler(colorValue){
+      setIcingColor(colorValue);
+  }
+
+  
   return ( 
         < div className="App">
         
@@ -63,7 +69,10 @@ export default () => {
           
           <div className="App__canvas">
 
-            <Interface />
+            <Interface 
+              icingChange={(colorValue)=> radioChangeHandler(colorValue)}
+              icingColor = {icingColor} />
+
             <Canvas camera={{ position: [0, 0.25, 0.2] }} 
                     onCreated={({ gl }) => {
                       gl.shadowMap.enabled= true
@@ -74,7 +83,9 @@ export default () => {
                 <fog attach="fog" args={["black", 10, 25]}/>
                 <Controls />
                 <Suspense fallback={null}>
-                    <Donut setShowLoader={setShowLoader} />
+                    <Donut 
+                    setShowLoader={setShowLoader}
+                    icingColor={icingColor} />
                 </Suspense>
             </Canvas>
 
