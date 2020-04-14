@@ -11,15 +11,16 @@ export default ({setShowLoader, icingColor}) => {
     const outerGroup = useRef()
     const [hovered, setHovered ] = useState(false);
     const [active, setActive] = useState(false);
+    let [rotationValue, setRotation] = useState(360);
 
 
     useEffect(() => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'), [hovered]);
-    let ugh = 360;
 
     const props = useSpring({
         scale: hovered ? [1.5, 1.5, 1.5] : [1, 1, 1],
-        rotation: active ? [0, THREE.Math.degToRad(ugh), 0] : [0, THREE.Math.degToRad(720), 0]
+        rotation: active ? [0, THREE.Math.degToRad(rotationValue), 0] : [0, THREE.Math.degToRad(rotationValue), 0]
       })
+
 
     const {nodes, materials} = useLoader(GLTFLoader, '/newdonut.gltf', loader=>{
         const dracoLoader = new DRACOLoader()
@@ -38,8 +39,11 @@ export default ({setShowLoader, icingColor}) => {
             firstUpdate.current = false;
             return;
         }
+        setRotation(rotationValue+=360)
+        
+       console.log(rotationValue);
+        // set({ rotation: active ? [0, THREE.Math.degToRad(ugh), 0] : [0, THREE.Math.degToRad(ugh), 0]})
         setActive(!active);
-        console.log('TEST: ', icingColor);
     }, [icingColor]);
 
     // useEffect(() => testMe(), [icingColor]);
