@@ -19,6 +19,9 @@ export default () => {
   const [showLoader, setShowLoader] = React.useState(true);
   const [icingColor, setIcingColor] = useState('pink');
 
+  // useEffect(() => {
+  //   console.log('showLoader Changed', showLoader);
+  // }, [showLoader]);
 
   const Controls = () => {
     const orbitRef = useRef();
@@ -40,6 +43,7 @@ export default () => {
   }
 
   const Loading = (props) =>{
+    console.log('loading');
     return(
       <animated.div  style={props.style} className="Loading__container" >
            <div className="Loading__spinner"><h1>LOADING</h1></div>
@@ -58,12 +62,11 @@ export default () => {
           <Transition
                 items={showLoader}
                 initial={{opacity: 1}}
+                enter={{ opacity: 1}}
                 from={{ opacity: 1}}
-                enter={{ opacity: 1 }}
-                update={{}}
                 leave={{ opacity: 0}}>
                 {showLoader =>
-                showLoader && (props => <Loading style={props}/>) }
+                 showLoader && (props => <Loading style={props}/>) }
           </Transition> 
 
           

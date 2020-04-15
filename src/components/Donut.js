@@ -7,31 +7,32 @@ import { useSpring, animated as a } from 'react-spring/three'
 
 
 export default ({setShowLoader, icingColor}) => {
-    const group = useRef()
-    const outerGroup = useRef()
+
+    
+    const group = useRef();
+    const outerGroup = useRef();
     const [hovered, setHovered ] = useState(false);
-    const [active, setActive] = useState(false);
     let [rotationValue, setRotation] = useState(360);
 
 
     useEffect(() => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'), [hovered]);
 
     const props = useSpring({
-        scale: hovered ? [1.5, 1.5, 1.5] : [1, 1, 1],
-        rotation: active ? [0, THREE.Math.degToRad(rotationValue), 0] : [0, THREE.Math.degToRad(rotationValue), 0]
-      })
+        scale: hovered ? [1.5, 1.5, 1.5] : [1, 1, 1]
+    })
 
+    const rotateDonut = useSpring({ rotation: [0, THREE.Math.degToRad(rotationValue), 0] });
 
     const {nodes, materials} = useLoader(GLTFLoader, '/newdonut.gltf', loader=>{
         const dracoLoader = new DRACOLoader()
         dracoLoader.setDecoderPath('/draco-gltf/')
         loader.setDRACOLoader(dracoLoader)
-        console.log('donut uploaded');
-      })
+    })
 
     React.useEffect(() => {
         setShowLoader(false)
     }, []);
+
 
     const firstUpdate = useRef(true);
     useEffect(() => {
@@ -40,23 +41,7 @@ export default ({setShowLoader, icingColor}) => {
             return;
         }
         setRotation(rotationValue+=360)
-        
-       console.log(rotationValue);
-        // set({ rotation: active ? [0, THREE.Math.degToRad(ugh), 0] : [0, THREE.Math.degToRad(ugh), 0]})
-        setActive(!active);
     }, [icingColor]);
-
-    // useEffect(() => testMe(), [icingColor]);
-
-    // function testMe(){
-    //     console.log('icing updated');
-    //     setActive(true);
-    // }
-
-//     useFrame( ({state, clock}) => {
-        
-//     }
-//    )
 
 
     return(
@@ -70,7 +55,7 @@ export default ({setShowLoader, icingColor}) => {
                 dispose={null}
                 onPointerOver={() => setHovered(true)}
                 onPointerOut={() => setHovered(false)}
-                rotation={props.rotation}
+                rotation={rotateDonut .rotation}
                 scale={props.scale}>
                     <a.mesh 
                         material={materials['Material.001']} 

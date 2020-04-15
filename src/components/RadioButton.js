@@ -3,8 +3,6 @@ import '../styles/Interface.scss'
 
 const RadioButton = (props) =>{
 
-
-
     return(
         <div 
         className="RadioButton"
