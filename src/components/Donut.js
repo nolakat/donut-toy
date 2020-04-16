@@ -12,8 +12,8 @@ export default ({setShowLoader, icingColor}) => {
     const group = useRef();
     const outerGroup = useRef();
     const [hovered, setHovered ] = useState(false);
+    const [showIcing, setshowIcing] = useState(true);
     let [rotationValue, setRotation] = useState(360);
-
 
     useEffect(() => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'), [hovered]);
 
@@ -32,7 +32,6 @@ export default ({setShowLoader, icingColor}) => {
     React.useEffect(() => {
         setShowLoader(false)
     }, []);
-
 
     const firstUpdate = useRef(true);
     useEffect(() => {

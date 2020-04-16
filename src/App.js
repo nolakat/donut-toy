@@ -17,11 +17,8 @@ extend({ OrbitControls })
 export default () => {
 
   const [showLoader, setShowLoader] = React.useState(true);
-  const [icingColor, setIcingColor] = useState('pink');
-
-  // useEffect(() => {
-  //   console.log('showLoader Changed', showLoader);
-  // }, [showLoader]);
+  const [icingColor, setIcingColor] = useState('#009DDC');
+  const [addSprinkles, setAddSprinkles] = useState(false);
 
   const Controls = () => {
     const orbitRef = useRef();
@@ -55,7 +52,10 @@ export default () => {
       setIcingColor(colorValue);
   }
 
-  
+  function sprinklesChangeHandler(sprinkleValue){
+    setAddSprinkles(!addSprinkles)
+  }
+
   return ( 
         < div className="App">
         
@@ -74,7 +74,9 @@ export default () => {
 
             <Interface 
               icingChange={(colorValue)=> radioChangeHandler(colorValue)}
-              icingColor = {icingColor} />
+              icingColor = {icingColor}
+              sprinklesChange={(sprinkleValue) => sprinklesChangeHandler(sprinkleValue)}
+              addSprinkles= {addSprinkles} />
 
             <Canvas camera={{ position: [0, 0.25, 0.2] }} 
                     onCreated={({ gl }) => {
