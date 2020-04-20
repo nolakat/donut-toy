@@ -90,7 +90,8 @@ export default () => {
                 <Suspense fallback={null}>
                     <Donut 
                     setShowLoader={setShowLoader}
-                    icingColor={icingColor} />
+                    icingColor={icingColor}
+                    addSprinkles={addSprinkles} />
                 </Suspense>
             </Canvas>
 

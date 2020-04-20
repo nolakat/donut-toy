@@ -6,7 +6,7 @@ import { useLoader, useFrame } from 'react-three-fiber'
 import { useSpring, animated as a } from 'react-spring/three'
 
 
-export default ({setShowLoader, icingColor}) => {
+export default ({setShowLoader, icingColor, addSprinkles}) => {
 
     
     const group = useRef();
@@ -23,13 +23,14 @@ export default ({setShowLoader, icingColor}) => {
 
     const rotateDonut = useSpring({ rotation: [0, THREE.Math.degToRad(rotationValue), 0] });
 
-    const {nodes, materials} = useLoader(GLTFLoader, '/newdonut.gltf', loader=>{
+    const {nodes, materials} = useLoader(GLTFLoader, '/newsprinklesdonut.gltf', loader=>{
         const dracoLoader = new DRACOLoader()
         dracoLoader.setDecoderPath('/draco-gltf/')
         loader.setDRACOLoader(dracoLoader)
     })
 
     React.useEffect(() => {
+        console.log('loaded', nodes);
         setShowLoader(false)
     }, []);
 
@@ -44,7 +45,8 @@ export default ({setShowLoader, icingColor}) => {
 
 
     return(
-       
+
+
        <a.group
         ref={outerGroup}
         displose={null}
@@ -56,6 +58,19 @@ export default ({setShowLoader, icingColor}) => {
                 onPointerOut={() => setHovered(false)}
                 rotation={rotateDonut .rotation}
                 scale={props.scale}>
+                    {addSprinkles &&
+                        <a.mesh 
+                            material={materials['Material.004']} 
+                            geometry={nodes.all_sprinkles.geometry}
+                            position={[0, -0.011, 0]}
+                            >
+                                <meshStandardMaterial
+                                attach = "material"
+                                color="hotpink"
+
+                                />
+                        </a.mesh>
+                    }
                     <a.mesh 
                         material={materials['Material.001']} 
                         geometry={nodes.Icing.geometry} 

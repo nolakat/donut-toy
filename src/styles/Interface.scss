@@ -14,7 +14,7 @@
 $md-radio-checked-color: rgb(51, 122, 183);
 $md-radio-border-color: rgba(0, 0, 0, 0.54);
 $md-radio-size: 20px;
-$md-radio-checked-size: 10px; 
+$md-radio-checked-size: 14px; 
 $md-radio-ripple-size: 15px;
 
 @keyframes ripple {
@@ -74,8 +74,8 @@ $md-radio-ripple-size: 15px;
         }
 
         &:after {
-            top: $md-radio-size / 2 - $md-radio-checked-size / 2;
-            left: $md-radio-size / 2 - $md-radio-checked-size / 2;
+            top: 5px;
+            left: 5px;
             width:$md-radio-checked-size;
             height:$md-radio-checked-size;
             transform: scale(0);

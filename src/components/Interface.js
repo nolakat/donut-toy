@@ -31,6 +31,7 @@ export default (props) => {
     return (
         <div className="Interface__container">
             <form>
+                <h5>sprinkles: {props.addSprinkles}</h5>
                 {
                     icingColors.map((obj, index) => {
                         return <RadioButton
