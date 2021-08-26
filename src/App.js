@@ -1,11 +1,9 @@
-import React, { useState,  Suspense, useRef, useEffect} from "react"
+import React, { useState,  Suspense, useRef} from "react"
+import { ReactSVG } from 'react-svg'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 import { Transition, animated } from 'react-spring/renderprops'
-import { Canvas, extend, useThree, useFrame, useLoader } from 'react-three-fiber'
-import { useSpring, a } from 'react-spring/three'
+import { Canvas, extend, useThree, useFrame} from 'react-three-fiber'
 import Donut from './components/Donut'
 import Interface from './components/Interface'
 
@@ -43,7 +41,7 @@ export default () => {
     console.log('loading');
     return(
       <animated.div  style={props.style} className="Loading__container" >
-           <div className="Loading__spinner"><h1>LOADING</h1></div>
+           <div className="Loading__spinner"><ReactSVG src="donut.svg" /></div>
        </animated.div>
     )
   }

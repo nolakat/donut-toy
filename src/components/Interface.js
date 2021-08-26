@@ -15,7 +15,7 @@ export default (props) => {
 
     let icingColors = [
         {
-            label: 'Blue',
+            label: 'Raspberry Blue',
             value: '#009DDC'
         },
         {
@@ -31,7 +31,7 @@ export default (props) => {
     return (
         <div className="Interface__container">
             <form>
-                <h5>sprinkles: {props.addSprinkles}</h5>
+                <h5 class="InterfaceHeader__flavor">Select Your Donut:</h5>
                 {
                     icingColors.map((obj, index) => {
                         return <RadioButton

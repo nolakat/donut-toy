@@ -1,18 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Chango&family=Open+Sans:ital,wght@0,300;0,600;0,700;1,400&display=swap');
 
+body{
+  background: red !important;
+}
 .Interface__container{
-    background: rgba(255, 255, 255, .5);
+    font-family: 'Chango', cursive;
+    color: #F2B880;
+    // background: #FFF4EC;
     border-radius: 10px;
     height: 500px;
     width: 350px;
+    padding: 0px 20px;
     position: absolute;
     z-index: 3;
     right: 20px;
     top: 50px;
 }
 
+.InterfaceHeader__flavor{
+  font-weight: normal;
+  font-size: 20px;
+}
 
-$md-radio-checked-color: rgb(51, 122, 183);
-$md-radio-border-color: rgba(0, 0, 0, 0.54);
+
+$md-radio-checked-color: #E7CFBC;
+$md-radio-border-color: #F2B880;
 $md-radio-size: 20px;
 $md-radio-checked-size: 14px; 
 $md-radio-ripple-size: 15px;
@@ -20,20 +32,20 @@ $md-radio-ripple-size: 15px;
 @keyframes ripple {
 
   0% {
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.0);
+    box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.0);
   }
 
   50% { 
-    box-shadow: 0px 0px 0px $md-radio-ripple-size rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 0px $md-radio-ripple-size rgba(255, 255, 255, 0.509);
   }
 
   100% {
-    box-shadow: 0px 0px 0px $md-radio-ripple-size rgba(0, 0, 0, 0);
+    box-shadow: 0px 0px 0px $md-radio-ripple-size rgba(255, 255, 255, 0);
   }
 }
 
 .RadioButton {
-    margin: 16px 0;
+    margin: 32px 0;
 
     input[type="radio"] {
         display: none;
@@ -50,7 +62,8 @@ $md-radio-ripple-size: 15px;
 
     label {
         display: inline-block;
-        height:$md-radio-size;
+        height: fit-content;
+        font-size: 2em;
         position: relative;
         padding: 0 ($md-radio-size + 10px);
         margin-bottom: 0;
@@ -67,14 +80,14 @@ $md-radio-ripple-size: 15px;
 
         &:before {
             left: 0;
-            top: 0;
+            top: 10px;
             width: $md-radio-size;
             height: $md-radio-size;
             border: 2px solid $md-radio-border-color;
         }
 
         &:after {
-            top: 5px;
+            top: 15px;
             left: 5px;
             width:$md-radio-checked-size;
             height:$md-radio-checked-size;
@@ -97,6 +110,8 @@ $md-radio-ripple-size: 15px;
     -ms-user-select: none;
     user-select: none;
 
+    margin-top: 60px;
+
     input {
         position: absolute;
         opacity: 0;
@@ -105,7 +120,7 @@ $md-radio-ripple-size: 15px;
         width: 0;
 
         &:checked ~ .checkmark {
-            background-color: #2196F3;
+            background-color: #E7CFBC;
           }
 
           :checked ~ .checkmark:after {
@@ -120,7 +135,9 @@ $md-radio-ripple-size: 15px;
         left: 0;
         height: 25px;
         width: 25px;
-        background-color: #eee;
+        background-color: transparent;
+        border: 2px solid;
+        border-radius: 5px;
 
         &:after {
             content: "";
@@ -130,7 +147,7 @@ $md-radio-ripple-size: 15px;
                 top: 5px;
                 width: 5px;
                 height: 10px;
-                border: solid white;
+                border: 10px solid #F2B880;
                 border-width: 0 3px 3px 0;
                 -webkit-transform: rotate(45deg);
                 -ms-transform: rotate(45deg);
@@ -139,7 +156,5 @@ $md-radio-ripple-size: 15px;
           }
       }
 
-      &:hover input ~ .checkmark {
-        background-color: #ccc;
-      }
+  
   }

@@ -13,7 +13,7 @@ canvas,
     padding: 0;
     width: 100%;
     height: 100%;
-    background: paleturquoise;
+    background: #966B9D;
 }
 
 .Loading__container{
@@ -27,11 +27,21 @@ canvas,
     align-items: center;
     justify-content: center;
     opacity: 1;
-    background: paleturquoise;
+    background: #966B9D;
 }
 
 .Loading__spinner{
-    background: greenyellow;
     width: 100px;
     height: 100px;
+    animation: spin 2s infinite linear; 
+
+    svg path{
+        fill: #FFF4EC;
+    }
+
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
 }
